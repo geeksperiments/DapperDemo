@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.90" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.17" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.15">
@@ -13,6 +14,32 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.114.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="SQLScripts\sqlite_scripts.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>sqlite_scripts.resx</DependentUpon>
+    </Compile>
+    <Compile Update="SQLScripts\sql_server_scripts.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>sql_server_scripts.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="SQLScripts\sqlite_scripts.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>sqlite_scripts.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="SQLScripts\sql_server_scripts.resx">
+      <CustomToolNamespace></CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>sql_server_scripts.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>
