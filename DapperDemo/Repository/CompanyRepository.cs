@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.IO;
 using System.Linq;
@@ -18,14 +19,22 @@ namespace DapperDemo.Repository
 
         public CompanyRepository(IConfiguration configuration)
         {
-            //sql server database
-            //_db = new SqlConnection(configuration.GetConnectionString("SqlServerConnection"));
-            //_scriptManager = SQLScripts.sql_server_scripts.ResourceManager;
 
-            //sql lite database
-            var dbFileLocation = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @".\..\..\..\.."));
-            _db = new SQLiteConnection(configuration.GetConnectionString("SqliteConnection").Replace("{AppDir}", dbFileLocation));
-            _scriptManager = SQLScripts.sqlite_scripts.ResourceManager;
+            switch (configuration.GetSection("DatabaseType").Value)
+            {
+                case "Sqlite":
+                    //sql lite database
+                    var dbFileLocation = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @".\..\..\..\.."));
+                    _db = new SQLiteConnection(configuration.GetConnectionString("SqliteConnection").Replace("{AppDir}", dbFileLocation));
+                    _scriptManager = SQLScripts.sqlite_scripts.ResourceManager;
+                    break;
+                default:
+                    //sql server database
+                    _db = new SqlConnection(configuration.GetConnectionString("SqlServerConnection"));
+                    _scriptManager = SQLScripts.sql_server_scripts.ResourceManager;
+                    break;
+            }
+
         }
 
         public Company Add(Company company)
