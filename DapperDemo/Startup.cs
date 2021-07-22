@@ -23,7 +23,18 @@ namespace DapperDemo
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddScoped<ICompanyRepository, CompanyRepository>();
+
+            switch (Configuration.GetSection("DatabaseType").Value)
+            {
+                case "Sqlite": 
+                    services.AddScoped<ICompanyRepository, CompanyRepositorySqlite>();
+                    break;
+                default:
+                    services.AddScoped<ICompanyRepository, CompanyRepositorySqlServer>();
+                    break;
+            }
+            
+
             services.AddControllersWithViews();
         }
 
