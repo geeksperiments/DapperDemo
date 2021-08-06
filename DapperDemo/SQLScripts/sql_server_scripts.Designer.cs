@@ -65,9 +65,9 @@ namespace DapperDemo.SQLScripts {
         ///VALUES(@Name, @Address, @City, @State, @PostalCode);
         ///SELECT CAST(SCOPE_IDENTITY() as int);.
         /// </summary>
-        public static string add {
+        public static string companies_add {
             get {
-                return ResourceManager.GetString("add", resourceCulture);
+                return ResourceManager.GetString("companies_add", resourceCulture);
             }
         }
         
@@ -76,9 +76,9 @@ namespace DapperDemo.SQLScripts {
         ///FROM Companies 
         ///WHERE CompanyId = @CompanyId.
         /// </summary>
-        public static string find {
+        public static string companies_find {
             get {
-                return ResourceManager.GetString("find", resourceCulture);
+                return ResourceManager.GetString("companies_find", resourceCulture);
             }
         }
         
@@ -86,9 +86,9 @@ namespace DapperDemo.SQLScripts {
         ///   Looks up a localized string similar to SELECT *
         ///FROM Companies.
         /// </summary>
-        public static string get_all {
+        public static string companies_get_all {
             get {
-                return ResourceManager.GetString("get_all", resourceCulture);
+                return ResourceManager.GetString("companies_get_all", resourceCulture);
             }
         }
         
@@ -97,9 +97,9 @@ namespace DapperDemo.SQLScripts {
         ///FROM Companies 
         ///WHERE CompanyId = @Id.
         /// </summary>
-        public static string remove {
+        public static string companies_remove {
             get {
-                return ResourceManager.GetString("remove", resourceCulture);
+                return ResourceManager.GetString("companies_remove", resourceCulture);
             }
         }
         
@@ -112,9 +112,67 @@ namespace DapperDemo.SQLScripts {
         ///PostalCode = @PostalCode 
         ///WHERE CompanyId = @CompanyId.
         /// </summary>
-        public static string update {
+        public static string companies_update {
             get {
-                return ResourceManager.GetString("update", resourceCulture);
+                return ResourceManager.GetString("companies_update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INSERT INTO Employees (Name, Title, Email, Phone, CompanyId) 
+        ///VALUES(@Name, @Title, @Email, @Phone, @CompanyId);
+        ///SELECT CAST(SCOPE_IDENTITY() as int);.
+        /// </summary>
+        public static string employees_add {
+            get {
+                return ResourceManager.GetString("employees_add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT * 
+        ///FROM Employees 
+        ///WHERE EmployeeId = @Id.
+        /// </summary>
+        public static string employees_find {
+            get {
+                return ResourceManager.GetString("employees_find", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT * 
+        ///FROM Employees.
+        /// </summary>
+        public static string employees_get_all {
+            get {
+                return ResourceManager.GetString("employees_get_all", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DELETE
+        ///FROM Employees 
+        ///WHERE EmployeeId = @Id.
+        /// </summary>
+        public static string employees_remove {
+            get {
+                return ResourceManager.GetString("employees_remove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UPDATE Employees 
+        ///SET Name = @Name, 
+        ///Title = @Title, 
+        ///Email = @Email, 
+        ///Phone = @Phone, 
+        ///CompanyId = @CompanyId 
+        ///WHERE EmployeeId = @EmployeeId.
+        /// </summary>
+        public static string employees_update {
+            get {
+                return ResourceManager.GetString("employees_update", resourceCulture);
             }
         }
     }

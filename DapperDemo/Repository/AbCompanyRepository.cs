@@ -14,29 +14,29 @@ namespace DapperDemo.Repository
 
         virtual public Company Add(Company company)
         {
-            var id = _db.Query<int>(_scriptManager.GetString("add"), company).Single();
+            var id = _db.Query<int>(_scriptManager.GetString("companies_add"), company).Single();
             company.CompanyId = id;
             return company;
         }
 
         virtual public Company Find(int id)
         {
-            return _db.Query<Company>(_scriptManager.GetString("find"), new { @CompanyId = id }).Single();
+            return _db.Query<Company>(_scriptManager.GetString("companies_find"), new { @CompanyId = id }).Single();
         }
 
         virtual public List<Company> GetAll()
         {
-            return _db.Query<Company>(_scriptManager.GetString("get_all")).ToList();
+            return _db.Query<Company>(_scriptManager.GetString("companies_get_all")).ToList();
         }
 
         virtual public void Remove(int id)
         {
-            _db.Execute(_scriptManager.GetString("remove"), new { id });
+            _db.Execute(_scriptManager.GetString("companies_remove"), new { id });
         }
 
         virtual public Company Update(Company company)
         {
-            _db.Execute(_scriptManager.GetString("update"), company);
+            _db.Execute(_scriptManager.GetString("companies_update"), company);
             return company;
         }
     }
